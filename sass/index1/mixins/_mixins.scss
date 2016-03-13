@@ -1,5 +1,5 @@
-
-@import './../utils/utils';
+$max-xs : 480px;
+$max-sm : 1024px;
 
 @mixin linearGradient($top, $bottom){
   background: $top; /* Old browsers */
@@ -66,4 +66,19 @@
   @media screen and (min-width:$max-sm + 1){
     width: $colNum*(100%/12)
   }
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin transform($val) {
+  -webkit-transform: $val;
+  -moz-transform: $val;
+  -ms-transform: $val;
+  transform: $val;
 }

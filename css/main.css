@@ -19,6 +19,13 @@
   font-weight: normal;
   font-style: normal;
 }
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
 body {
   padding: 30px 50px;
   background: #e2e2e2;
@@ -34,54 +41,19 @@ b {
   font-family: 'open_sansbold';
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style: none;
+.grow {
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
-@font-face {
-  font-family: 'open_sansregular';
-  src: url("./../files/fonts/OpenSans/opensans-regular-webfont.eot");
-  src: url("./../files/fonts/OpenSans/opensans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("./../files/fonts/OpenSans/opensans-regular-webfont.woff2") format("woff2"), url("./../files/fonts/OpenSans/opensans-regular-webfont.woff") format("woff"), url("./../files/fonts/OpenSans/opensans-regular-webfont.ttf") format("truetype"), url("./../files/fonts/OpenSans/opensans-regular-webfont.svg#open_sansregular") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'open_sansbold';
-  src: url("./../files/fonts/OpenSans/opensans-bold-webfont.eot");
-  src: url("./../files/fonts/OpenSans/opensans-bold-webfont.eot?#iefix") format("embedded-opentype"), url("./../files/fonts/OpenSans/opensans-bold-webfont.woff2") format("woff2"), url("./../files/fonts/OpenSans/opensans-bold-webfont.woff") format("woff"), url("./../files/fonts/OpenSans/opensans-bold-webfont.ttf") format("truetype"), url("./../files/fonts/OpenSans/opensans-bold-webfont.svg#open_sansbold") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'open_sanslight';
-  src: url("./../files/fonts/OpenSans/opensans-light-webfont.eot");
-  src: url("./../files/fonts/OpenSans/opensans-light-webfont.eot?#iefix") format("embedded-opentype"), url("./../files/fonts/OpenSans/opensans-light-webfont.woff2") format("woff2"), url("./../files/fonts/OpenSans/opensans-light-webfont.woff") format("woff"), url("./../files/fonts/OpenSans/opensans-light-webfont.ttf") format("truetype"), url("./../files/fonts/OpenSans/opensans-light-webfont.svg#open_sanslight") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-body {
-  padding: 30px 50px;
-  background: #e2e2e2;
-  font-family: 'open_sansregular';
-}
-@media screen and (max-width: 1024px) {
-  body {
-    padding: 10px 0;
-  }
-}
-
-b {
-  font-family: 'open_sansbold';
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style: none;
+.grow:hover {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .tarife-plan {

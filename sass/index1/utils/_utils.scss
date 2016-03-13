@@ -43,6 +43,8 @@ $lite-gray  : #979797;
 
 }
 
+*{margin: 0; padding: 0; text-decoration: none; list-style: none;}
+
 body{
   padding: 30px 50px;
   background: #e2e2e2;
@@ -53,4 +55,6 @@ body{
 }
 b{font-family: 'open_sansbold';}
 
-*{margin: 0; padding: 0; text-decoration: none; list-style: none;}
+
+.grow { @include transition(all 1s ease-in-out); }
+.grow:hover { @include transform(scale(1.1)); }
