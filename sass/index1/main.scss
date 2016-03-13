@@ -1,0 +1,79 @@
+@import 'mixins/mixins';
+@import 'utils/utils';
+
+
+
+.tarife-plan{
+  width: 25%;
+  text-align: center;
+  display: inline-block;
+  @include set-col-xs(12);
+  @include set-col-sm(6);
+  @include set-col-md(3);
+  &__wrap{
+    background: #ffffff;
+    @include border-radius(5px);
+    cursor: pointer;
+    margin: 5px;
+    &:hover{
+
+    }
+  }
+  &__title{
+    font-family: 'open_sanslight';
+    font-size: 34px;
+    padding: 25px 0;
+    color: #3e4f6a;
+    span{margin-left: 5px;}
+  }
+  &__price{
+    padding: 15px 0;
+    background: #455773;
+    @include linearGradient(#475975, #364761);
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'open_sansbold';
+    .iterator{
+      color: $lite-gray;
+    }
+  }
+  &__options{
+    padding: 30px 0;
+    li{
+      padding: 10px 0;
+      color: $lite-gray;
+      b{color: $base-color; margin-right: 5px;}
+    }
+  }
+  &__choose-bt{
+    margin:0 auto 15px;
+    padding: 15px 0;
+    border: 2px solid $base-color;
+    @include border-radius(5px);
+    display: inline-block;
+    color: $base-color;
+    width: 90%;
+    font-weight: bold;
+  }
+  &:hover{
+    .tarife-plan{
+      &__title{
+        color: #ffffff;
+        background: #455773;
+        @include linearGradient(#475975, #364761);
+        @include border-top-radius(5px);
+      }
+      &__price{
+        background: #f7814d;
+        color: #ffffff;
+        .iterator{color: #ffffff;}
+      }
+      &__choose-bt{
+        background: #f7814d;
+        color: #ffffff;
+        border: none;
+        padding: 17px 2px;
+      }
+    }
+  }
+}

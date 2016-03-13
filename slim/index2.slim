@@ -1,0 +1,57 @@
+doctype html
+html lang='en' ng-app='phonecatApp'
+  head
+    meta charset='utf-8'
+    title idfly#2
+    link rel='stylesheet' href='./../css/common.css'
+    script src='./../node_modules/angular/angular.js'
+    script src='./../node_modules/angular-route/angular-route.js'
+    script src='./../node_modules/angular-resource/angular-resource.js'
+    script src='./../app/js/Controller.js'
+  body.clearfix ng-controller='PhoneListCtrl'
+
+    h1 управление входящими заявками
+    form name="formEntriesCalls" ng-submit="submitFormCalls(obgNew)"
+      div class="title"
+        label class="db" Заголовок
+        input type="text" ng-model="obgNew.title" name="title" placeholder=" Заголовок"
+      div class="text"
+        label class="db" Текст заявки
+        textarea type="text" ng-model="obgNew.text" name="text" placeholder="Текст заявки"
+      div class="list"
+        label Проект
+        input ng-model="obgNew.project" type="text" name="any" placeholder="Введите др."
+        select ng-click="sortOpt('project')" ng-model="projectList" ng-options="opt as opt.project for opt in storage.local.entriesCalls"
+          /--option ng-repeat="opt in storage.local.entriesCalls | filter:orderBy:projSortOpt track by $index"  name="opt.project"--
+            !--{{opt.project}}--
+      div class="urgency"
+        label class="placeholder" Срочность
+        input type="radio" name="urgency" id="low" ng-model="obgNew.speed" value="low" placeholder="низкая"
+        label for="low" низкая
+        input type="radio" name="urgency" id="medium" ng-model="obgNew.speed" value="medium" placeholder="обычная"
+        label for="medium" обычная
+        input type="radio" name="urgency" id="hight" ng-model="obgNew.speed" value="hight" placeholder="высокая"
+        label for="hight" высокая
+      div class="date"
+        label Дата поступления
+        input ng-model="obgNew.date" type="date" name="entry-date"
+      button type="submit" Отправить
+
+
+    div class="list-entries-calls"
+      table border="1px"
+        thead
+          tr
+            th
+              a href="#" ng-click="sort('title')" Заголовок
+            th Проект
+            th Текст заявки
+        tbody
+          tr ng-repeat="call in storage.local.entriesCalls | filter:{$:query, project:projSortField}:sortFieldHelp(project)| orderBy:sortField:reverse track by $index"
+            td
+              |{{call.title}}
+            td
+              a href="#" ng-click="projSort(call.project)"
+                |{{call.project}}
+            td
+              |{{call.text}}

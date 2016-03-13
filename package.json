@@ -1,0 +1,23 @@
+{
+  "name": "idfly",
+  "version": "0.0.1",
+  "scripts": {
+    "gulp": "gulp",
+    "minify": "gulp minify",
+    "grunt": "grunt"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-concat": "^2.4.1",
+    "gulp-minify-css": "^0.3.10",
+    "gulp-slim": "^0.3.0",
+    "gulp-uglify": "^1.0.1",
+    "gulp-util": "^3.0.1",
+
+    "grunt": "~0.4.5",
+    "grunt-slim": "^0.1.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-contrib-uglify": "~0.5.0"
+  }
+}

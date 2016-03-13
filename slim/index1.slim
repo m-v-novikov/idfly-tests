@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    title idfly#1
+    meta charset='utf-8'
+    link rel='stylesheet' href='./../css/main.css' media='screen, projection'
+
+  body
+    ul
+    -for item in [1, 2, 3, 4] do
+      li class='tarife-plan'
+        div class='tarife-plan__wrap'
+          div class='tarife-plan__title'
+            |Plan
+            span =item
+          div class='tarife-plan__price'
+            |$
+            span =10*item
+            |/
+            span class='iterator' month
+          ul class='tarife-plan__options'
+            li
+              b 2x
+              | option 1
+            li
+              b Free
+              | option 2
+            li
+              b Unlimited
+              | option 3
+            li
+              b Unlimited
+              | option 4
+            li
+              b 1x
+              | option 5
+          a href='#' class='tarife-plan__choose-bt':b PURCHASE
