@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-var phonecatApp = angular.module('phonecatApp', []);
+var phonecatApp = angular.module('phonecatApp', ['phonecatApp.filters', 'phonecatApp.filters1']);
 
 phonecatApp.controller('PhoneListCtrl',['$scope', '$http', function($scope, $http) {
 
@@ -12,9 +12,9 @@ phonecatApp.controller('PhoneListCtrl',['$scope', '$http', function($scope, $htt
             name = name || '_objectStorage',
             defaultDuration = 5000;
 
-        // дабы не плодить кучу экземпляров, использующих один и тот же ключ хранилища,
-        // просто возвращаем единственный с заданным именем,
-        // меняя только duration (если имеется)
+        // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ,
+        // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ,
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ duration (пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
         if ( ObjectStorage.instances[ name ] ) {
             self = ObjectStorage.instances[ name ];
             self.duration = duration || self.duration;
@@ -60,16 +60,15 @@ phonecatApp.controller('PhoneListCtrl',['$scope', '$http', function($scope, $htt
                 self._save( 'session' );
             });
         },
-        // на случай, если нужно удалить таймаут (clearTimeout( storage.timeoutId ))
+        // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (clearTimeout( storage.timeoutId ))
         timeoutId: null,
         local: {},
         session: {}
     };
 
     $scope.storage = new ObjectStorage;
-    //delete $scope.storage.local.entriesCalls; uncomment for reset array
+    //delete $scope.storage.local.entriesCalls; //uncomment for reset array
     console.log( $scope.storage );
-
 
     $scope.submitFormCalls = function(obgNew){
         //$scope.method = 'GET';
@@ -109,14 +108,14 @@ phonecatApp.controller('PhoneListCtrl',['$scope', '$http', function($scope, $htt
         {
             "title": "title1",
             "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-            "project": "mans",
+            "project": "mens",
             "speed": "medium",
             "date": "12.11.2012"
         },
         {
             "title": "title2",
             "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-            "project": "mans",
+            "project": "mens",
             "speed": "low",
             "date": "10.12.2012"
         },
@@ -132,6 +131,23 @@ phonecatApp.controller('PhoneListCtrl',['$scope', '$http', function($scope, $htt
         console.log('!hasOwnProperty(entriesCalls)');
         $scope.storage.local = {entriesCalls:$scope.calls};
     }
+
+    $scope.optionsArr = [];
+    $scope.temporayOptions = [];
+    $scope.chooseOpt = '';
+    $scope.setSortOpt = function(nameOpt){
+        $scope.chooseOpt = nameOpt;
+    };
+
+
+    $scope.selectedProjects = [];
+    $scope.setSelectedProj = function () {
+        var proj = this.call.project;
+        $scope.selectedProjects.push(proj);
+
+        return false;
+    };
+
 
     //sort on title of table
     $scope.sortField = undefined;
@@ -150,11 +166,11 @@ phonecatApp.controller('PhoneListCtrl',['$scope', '$http', function($scope, $htt
     $scope.projSortField = undefined;
 
     $scope.projSort = function(fieldName){
-        //console.log(fieldName);
+        //console.log(fieldName + ' projSort');
         $scope.projSortField = fieldName;
     };
     $scope.sortFieldHelp = function(fieldName, projName){
-        //console.log(fieldName + ' sortFieldHelp');
+        //console.log(fieldName + ' ' + projName + ' sortFieldHelp');
     };
 
     //sort entriesCalls.project's for select option's
@@ -166,10 +182,52 @@ phonecatApp.controller('PhoneListCtrl',['$scope', '$http', function($scope, $htt
                 $scope.projSortOpt.push(item);
             }
         }
-        console.log($scope.projSortOpt);
+        //console.log($scope.projSortOpt);
         //$scope.projSortOpt = fieldName;
     };
 
     //I have an error on duple! - Error: [ngRepeat:dupes] Duplicates in a repeater are not allowed. Use 'track by' expression to specify unique keys. Repeater: opt in storage.local.entriesCalls | filter:orderBy:projSortOpt, Duplicate key: object:87, Duplicate value:
-    //I set 'track by $index' for diseable this errors. but maybe i wrong
+    //I set 'track by $index' for disable this errors. but maybe i wrong
+}]);
+
+angular.module('phonecatApp.filters', []).filter('projectFilter', [function(){
+    return function(projField, projName){
+
+        //console.log(projField, projName);
+        if (!angular.isUndefined(projField) && !angular.isUndefined(projName) && projName.length > 0){
+            var tempProjects = [];
+
+            angular.forEach(projName, function (projectN) {
+                angular.forEach(projField, function (projectF) {
+                    if (angular.equals(projectF.project, projectN)) {
+                        tempProjects.push(projectF);
+                    }
+                });
+            });
+            return tempProjects;
+        }else{
+            return projField;
+        }
+    }
+}]);
+
+angular.module('phonecatApp.filters1', []).filter('selectedOption', [function(){
+    return function(defArr, optArr, tempArr){
+        //console.log(defArr, optArr, tempArr);
+        if (!angular.isUndefined(optArr) && !angular.isUndefined(optArr)){
+
+            for(var i = 0; i < defArr.length; i++){
+
+                if (tempArr.indexOf(defArr[i].project) == -1){
+                    optArr.push(defArr[i]);
+                    tempArr.push(defArr[i].project);
+                    console.log(optArr);
+                }
+            }
+            return optArr;
+
+        }else{
+            return defArr;
+        }
+    }
 }]);
