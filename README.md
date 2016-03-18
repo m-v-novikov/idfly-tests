@@ -14,3 +14,7 @@ cmd project_folder  -grunt
 
 ##test#2
 ./html/index2.html
+
+## projHelper
+You can clean your obj localStorage =>
+=> uncomment "delete $scope.storage.local.entriesCalls;" in "app/Controller.js" at once(then comment this line).
