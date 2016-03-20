@@ -89,7 +89,7 @@ phonecatApp.controller('PhoneListCtrl',['$scope', '$http', function($scope, $htt
         //console.log(angular.toJson($scope.formEntriesCalls));
         if($scope.storage.local.hasOwnProperty('entriesCalls')){
             $scope.storage.local.entriesCalls.push(obgNew);
-            console.log(obgNew);
+            //console.log(obgNew);
         }else{
             $scope.storage.local.entriesCalls = [];
             $scope.storage.local.entriesCalls.push(obgNew);
@@ -221,7 +221,7 @@ angular.module('phonecatApp.filters1', []).filter('selectedOption', [function(){
                 if (tempArr.indexOf(defArr[i].project) == -1){
                     optArr.push(defArr[i]);
                     tempArr.push(defArr[i].project);
-                    console.log(optArr);
+                    //console.log(optArr);
                 }
             }
             return optArr;

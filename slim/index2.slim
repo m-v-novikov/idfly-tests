@@ -19,9 +19,9 @@ html lang='en' ng-app='phonecatApp'
       div class="list"
         label Проект
         input ng-model="obgNew.project" type="text" name="any" placeholder="Введите др."
-        input.hidden ng-model="obgNew.project" value="{{chooseOpt}}" type="text" name="proj-name"
         /--select ng-click="setSortOpt()" ng-model="projectList" ng-options="opt as opt.project for opt in storage.local.entriesCalls | selectedOption: selectedProjects"--
-        select
+        select ng-model="obgNew.project"
+          option value="" Выберите проект
           option ng-click="setSortOpt(opt.project)" ng-repeat="opt in storage.local.entriesCalls | selectedOption: optionsArr: temporayOptions "
             |{{opt.project}}
       div class="urgency"

@@ -38,6 +38,10 @@ form textarea {
 .list-entries-calls table thead th:last-child {
   width: 80%;
 }
+.list-entries-calls table tr td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 @media screen and (max-width: 980px) {
   form {
